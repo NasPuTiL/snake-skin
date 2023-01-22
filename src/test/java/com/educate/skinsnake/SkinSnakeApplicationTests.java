@@ -1,10 +1,10 @@
-package com.skin.snake.skinsnke;
+package com.educate.skinsnake;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SkinSnkeApplicationTests {
+class SkinSnakeApplicationTests {
 
 	@Test
 	void contextLoads() {

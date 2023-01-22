@@ -1,13 +1,13 @@
-package com.skin.snake.skinsnke;
+package com.educate.skinsnake;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SkinSnkeApplication {
+public class SkinSnakeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SkinSnkeApplication.class, args);
+		SpringApplication.run(SkinSnakeApplication.class, args);
 	}
 
 }

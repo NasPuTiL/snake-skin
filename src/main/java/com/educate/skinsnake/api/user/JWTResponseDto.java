@@ -13,9 +13,8 @@ public class JWTResponseDto {
     private String accessToken;
     private String tokenType = "Bearer";
     private String refreshToken;
-    private String userId;
-    private String userName;
+    private String username;
     private String email;
-    private List<String> roles;
+    private String role;
     private List<String> permissions;
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "ROLES")
 @Setter(AccessLevel.PACKAGE)
 @Builder(access = AccessLevel.PACKAGE)
-public class Role (Long roleId, String role, List<UserRolePermission> userRolePermissionList) {
+public class Role {
     @Id
     @GeneratedValue(generator = "ROLES_SEQ")
     @SequenceGenerator(name = "ROLES_SEQ", sequenceName = "ROLES_SEQ", allocationSize = 1)

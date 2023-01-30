@@ -1,6 +1,6 @@
 package com.educate.skinsnake.domain;
 
-import com.educate.skinsnake.applkcation.user.CreateTokenCommand;
+import com.educate.skinsnake.applkcation.user.command.CreateTokenCommand;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.educate.skinsnake.applkcation.user;
+package com.educate.skinsnake.applkcation.user.command;
 
 import com.educate.skinsnake.domain.User;
 import lombok.AccessLevel;

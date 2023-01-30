@@ -2,6 +2,8 @@ package com.educate.skinsnake.applkcation.user;
 
 import com.educate.skinsnake.api.user.JWTResponseDto;
 import com.educate.skinsnake.api.user.LoginUserDto;
+import com.educate.skinsnake.applkcation.user.command.CreateTokenBuilder;
+import com.educate.skinsnake.applkcation.user.command.CreateTokenCommand;
 import com.educate.skinsnake.domain.Token;
 import com.educate.skinsnake.domain.TokenSaver;
 import com.educate.skinsnake.domain.User;

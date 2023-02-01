@@ -12,7 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "USERS")
 @Setter(AccessLevel.PACKAGE)
-@Builder(access = AccessLevel.PACKAGE)
+//@Builder(access = AccessLevel.PACKAGE)
+@Builder
 public class User {
     @Id
     @GeneratedValue(generator = "USERS_SEQ")
@@ -22,10 +23,10 @@ public class User {
     private String username;
     @Column(name = "PASSWORD", nullable = false)
     private String password;
-    @Column(name = "ROLE", nullable = false)
-    private String role;
     @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
-    @OneToMany(mappedBy = "user")
-    private List<UserRolePermission> userRolePermissionList;
+
+    @ManyToOne
+    @JoinColumn(name = "ROLE_ID", nullable = false)
+    private Role role;
 }

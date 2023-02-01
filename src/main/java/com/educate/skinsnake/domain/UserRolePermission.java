@@ -18,9 +18,6 @@ public class UserRolePermission {
     @SequenceGenerator(name = "USER_ROLE_PERMISSIONS_SEQ", sequenceName = "USER_ROLE_PERMISSIONS_SEQ", allocationSize = 1)
     private Long userRolePermissionId;
     @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
-    private User user;
-    @ManyToOne
     @JoinColumn(name = "ROLE_ID", nullable = false)
     private Role role;
     @ManyToOne

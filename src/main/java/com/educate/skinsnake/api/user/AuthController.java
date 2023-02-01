@@ -13,27 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@RestController()
+@RestController
 @AllArgsConstructor
-@RequestMapping("token")
 public class AuthController {
 
-    private final TokenService tokenService;
-
-    @ApiOperation(value = "User login endpoint")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved"),
-            @ApiResponse(code = 404, message = "Not found - The product was not found"),
-            @ApiResponse(code = 500, message = "Server error")
-    })
-    @PostMapping(value = "/generate")
-    public String generateToken(Authentication authentication) {
-        log.debug("Token generation for {}", authentication.getName());
-        return tokenService.generateToken(authentication);
-    }
-
-    @GetMapping
-    public String test() {
-        return "PERMITTED!";
-    }
+//    private final TokenService tokenService;
+//
+//    @ApiOperation(value = "User login endpoint")
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 200, message = "Successfully retrieved"),
+//            @ApiResponse(code = 404, message = "Not found - The product was not found"),
+//            @ApiResponse(code = 500, message = "Server error")
+//    })
+//    @PostMapping(value = "/token")
+//    public String generateToken(Authentication authentication) {
+//        log.debug("Token generation for {}", authentication.getName());
+//        return tokenService.generateToken(authentication);
+//    }
 }

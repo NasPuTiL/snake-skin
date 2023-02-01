@@ -12,7 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "ROLES")
 @Setter(AccessLevel.PACKAGE)
-@Builder(access = AccessLevel.PACKAGE)
+//@Builder(access = AccessLevel.PACKAGE)
+@Builder
 public class Role {
     @Id
     @GeneratedValue(generator = "ROLES_SEQ")

@@ -20,6 +20,7 @@ public class Permission {
     private Long permissionId;
     @Column(name = "PERMISSION_NAME", nullable = false)
     private String permission;
+
     @OneToMany(mappedBy = "permission")
     private List<UserRolePermission> userRolePermissionList;
 }

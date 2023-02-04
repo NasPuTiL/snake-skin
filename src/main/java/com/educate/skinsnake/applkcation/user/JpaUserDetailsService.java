@@ -2,6 +2,7 @@ package com.educate.skinsnake.applkcation.user;
 
 import com.educate.skinsnake.config.SecurityUser;
 import com.educate.skinsnake.domain.*;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,21 +16,20 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public JpaUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User i = userRepository.findByUsername(username).get();
-        System.out.println("user = " + i.getPassword());
         return userRepository.findByUsername(username)
                 .map(user -> new SecurityUser(user.getUsername(), user.getPassword(), providePermissions(user)))
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("Username not found %s.", username)));
+                    .orElseThrow(() -> {
+                    log.error("Username not found {}", username);
+                    return new UsernameNotFoundException(String.format("Username not found %s.", username));
+                });
     }
 
     private List<String> providePermissions(User user) {

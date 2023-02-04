@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +32,13 @@ public class AuthController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('USER_ROLE')")
     public String test() {
         return "TEST POST";
+    }
+
+    @GetMapping(value = "t1")
+    public String t1() {
+        return "TEST t1";
     }
 }

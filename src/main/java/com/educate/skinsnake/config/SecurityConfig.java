@@ -10,6 +10,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -37,11 +38,12 @@ public class SecurityConfig {
     };
     private final JpaUserDetailsService jpaUserDetailsService;
     private final RsaKeyProperties rsaKeys;
+    private AuthEntryPointJwt unauthorizedHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.ignoringAntMatchers("/swagger-ui/"))
+                .csrf().disable()
                 .authorizeRequests(auth -> {
                     auth.antMatchers(AUTH_WHITELIST).permitAll();
                     auth.anyRequest().authenticated();
@@ -50,7 +52,8 @@ public class SecurityConfig {
                 .userDetailsService(jpaUserDetailsService)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .headers(header -> header.frameOptions().sameOrigin())
-//                .addFilterBefore()
+                .httpBasic(Customizer.withDefaults())
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .build();
     }
 

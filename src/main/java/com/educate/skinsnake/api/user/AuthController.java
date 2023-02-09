@@ -31,6 +31,18 @@ public class AuthController {
         return tokenService.generateToken(authentication);
     }
 
+    @ApiOperation(value = "User login endpoint2")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved"),
+            @ApiResponse(code = 404, message = "Not found - The product was not found"),
+            @ApiResponse(code = 500, message = "Server error")
+    })
+    @PostMapping(value = "/token2")
+    public String generateToken2(Authentication authentication) {
+        log.debug("Token generation for {}", authentication.getName());
+        return tokenService.generateToken(authentication);
+    }
+
     @PostMapping
     @PreAuthorize("hasRole('USER_ROLE')")
     public String test() {

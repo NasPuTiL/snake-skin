@@ -1,9 +1,8 @@
-package com.educate.skinsnake.domain;
+package com.educate.skinsnake.domain.user;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
@@ -12,8 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "USERS")
 @Setter(AccessLevel.PACKAGE)
-//@Builder(access = AccessLevel.PACKAGE)
-@Builder
+@Builder(access = AccessLevel.PACKAGE)
 public class User {
     @Id
     @GeneratedValue(generator = "USERS_SEQ")

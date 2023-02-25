@@ -1,4 +1,4 @@
-package com.educate.skinsnake.domain;
+package com.educate.skinsnake.domain.user;
 
 import lombok.*;
 

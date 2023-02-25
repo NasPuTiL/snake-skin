@@ -1,7 +1,7 @@
-package com.educate.skinsnake.applkcation.user;
+package com.educate.skinsnake.config;
 
 import com.educate.skinsnake.config.SecurityUser;
-import com.educate.skinsnake.domain.*;
+import com.educate.skinsnake.domain.user.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,8 +24,6 @@ public class JpaUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user1 = userRepository.findByUsername(username).get();
-        System.out.println("user1 = " + user1);
         return userRepository.findByUsername(username)
                 .map(user -> new SecurityUser(user.getUsername(), user.getPassword(), providePermissions(user)))
                     .orElseThrow(() -> {
@@ -35,7 +33,7 @@ public class JpaUserDetailsService implements UserDetailsService {
     }
 
     private List<String> providePermissions(User user) {
-        String roleName = Optional.of(user.getRole()).map(Role::getRole).get();
+        String roleName = Optional.of(user.getRole()).map(Role::getName).get();
         List<String> permissions = user.getRole().getUserRolePermissionList().stream()
                 .map(UserRolePermission::getPermission)
                 .map(Permission::getPermission)
